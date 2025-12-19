@@ -1,18 +1,18 @@
-Timestamp: 2025-12-19T09:00:44.259Z
+Timestamp: 2025-12-19T09:19:04.114Z
 Error Name: Error
-Error Message: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent: [404 Not Found] models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
-Stack: Error: [GoogleGenerativeAI Error]: Error fetching from https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent: [404 Not Found] models/gemini-pro is not found for API version v1beta, or is not supported for generateContent. Call ListModels to see the list of available models and their supported methods.
-    at handleResponseNotOk (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\.next\dev\server\chunks\node_modules_adf7ed26._.js:9461:11)
+Error Message: 400 {"error":{"message":"The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+Stack: Error: 400 {"error":{"message":"The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.","type":"invalid_request_error","code":"model_decommissioned"}}
+    at APIError.generate (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\.next\dev\server\chunks\node_modules_5af318f5._.js:276:20)
+    at Groq.makeStatusError (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\.next\dev\server\chunks\node_modules_5af318f5._.js:1190:164)
+    at Groq.makeRequest (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\.next\dev\server\chunks\node_modules_5af318f5._.js:1241:30)
     at process.processTicksAndRejections (node:internal/process/task_queues:105:5)
-    at async makeRequest (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\.next\dev\server\chunks\node_modules_adf7ed26._.js:9433:9)
-    at async generateContent (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\.next\dev\server\chunks\node_modules_adf7ed26._.js:9875:22)
-    at async POST (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\.next\dev\server\chunks\[root-of-the-server]__e2b9c1a8._.js:91:24)
+    at async POST (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\.next\dev\server\chunks\[root-of-the-server]__e37e3389._.js:145:28)
     at async AppRouteRouteModule.do (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.dev.js:5:37866)
     at async AppRouteRouteModule.handle (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.dev.js:5:45156)
-    at async responseGenerator (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\.next\dev\server\chunks\node_modules_adf7ed26._.js:16373:38)
+    at async responseGenerator (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\.next\dev\server\chunks\node_modules_next_d0453476._.js:14843:38)
     at async AppRouteRouteModule.handleResponse (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\node_modules\next\dist\compiled\next-server\app-route-turbo.runtime.dev.js:1:187713)
-    at async handleResponse (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\.next\dev\server\chunks\node_modules_adf7ed26._.js:16436:32)
-    at async Module.handler (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\.next\dev\server\chunks\node_modules_adf7ed26._.js:16489:13)
+    at async handleResponse (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\.next\dev\server\chunks\node_modules_next_d0453476._.js:14906:32)
+    at async Module.handler (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\.next\dev\server\chunks\node_modules_next_d0453476._.js:14959:13)
     at async DevServer.renderToResponseWithComponentsImpl (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\node_modules\next\dist\server\base-server.js:1422:9)
     at async DevServer.renderPageComponent (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\node_modules\next\dist\server\base-server.js:1474:24)
     at async DevServer.renderToResponseImpl (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\node_modules\next\dist\server\base-server.js:1524:32)
@@ -27,6 +27,29 @@ Stack: Error: [GoogleGenerativeAI Error]: Error fetching from https://generative
     at async requestHandlerImpl (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\node_modules\next\dist\server\lib\router-server.js:496:13)
     at async Server.requestListener (C:\Users\Ashik WorkSpace\Desktop\khoroch Ai\node_modules\next\dist\server\lib\start-server.js:226:13)
 Full Error: {
-  "status": 404,
-  "statusText": "Not Found"
+  "status": 400,
+  "headers": {
+    "alt-svc": "h3=\":443\"; ma=86400",
+    "cache-control": "private, max-age=0, no-store, no-cache, must-revalidate",
+    "cf-cache-status": "DYNAMIC",
+    "cf-ray": "9b05d0ec2b945de8-DAC",
+    "connection": "keep-alive",
+    "content-length": "275",
+    "content-type": "application/json",
+    "date": "Fri, 19 Dec 2025 09:19:03 GMT",
+    "server": "cloudflare",
+    "set-cookie": "__cf_bm=ru2rRj9r9Yo.tQqc3mXmBFsU6CtHew32l4zH.sWi7Cc-1766135943-1.0.1.1-4WdAeTPdth4.4D9NpU515ep8jz3L30Yd.gIs5DuDWo184QJGQlQMypRfgmDgxA7ANAveAxTUC9iDRptw.Kd9mIS2IleqT5yGBE5Xv4sqlVU; path=/; expires=Fri, 19-Dec-25 09:49:03 GMT; domain=.groq.com; HttpOnly; Secure; SameSite=None",
+    "strict-transport-security": "max-age=15552000",
+    "vary": "Origin",
+    "via": "1.1 google",
+    "x-groq-region": "bom",
+    "x-request-id": "req_01kctyfkxeef9rqtqh1ms12ws1"
+  },
+  "error": {
+    "error": {
+      "message": "The model `llama3-8b-8192` has been decommissioned and is no longer supported. Please refer to https://console.groq.com/docs/deprecations for a recommendation on which model to use instead.",
+      "type": "invalid_request_error",
+      "code": "model_decommissioned"
+    }
+  }
 }

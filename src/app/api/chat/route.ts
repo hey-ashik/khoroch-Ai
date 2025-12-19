@@ -1,37 +1,45 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
+import Groq from 'groq-sdk';
 import { NextResponse } from 'next/server';
 
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_AI_API_KEY || '');
+const groq = new Groq({
+    apiKey: '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'
+});
 
 export async function POST(req: Request) {
     try {
-        // Hardcoded key to resolve env loading issue
-        const apiKey = 'AIzaSyCaEnX4nA0i9ShDU6GeL2RYTK-Xto4qk9o';
-
         const { message, context } = await req.json();
         const currentDate = new Date().toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
 
-        const genAI = new GoogleGenerativeAI(apiKey);
-        const model = genAI.getGenerativeModel({ model: 'gemini-pro' });
-
-        const prompt = `
+        const systemPrompt = `
       You are Khoroch AI, a smart expense assistant.
       Today is ${currentDate}.
 
       Here is the current expense data in JSON format:
       ${JSON.stringify(context)}
 
-      User Question: ${message}
-
-      Answer the user's question based on the data provided. 
-      Be helpful, concise, and friendly. 
-      If the user asks for suggestions to reduce costs, analyze the data and give specific advice.
-      Format your response in Markdown.
+      INSTRUCTIONS:
+      1. Answer the user's question STRICTLY based on the expense data provided above.
+      2. If the answer cannot be found in the data, state that you don't have that information.
+      3. Be helpful, concise, and friendly.
+      4. If the user asks for suggestions to reduce costs, analyze the data and give specific advice.
+      5. Format your response in Markdown.
     `;
 
-        const result = await model.generateContent(prompt);
-        const response = await result.response;
-        const text = response.text();
+        const completion = await groq.chat.completions.create({
+            messages: [
+                {
+                    role: 'system',
+                    content: systemPrompt
+                },
+                {
+                    role: 'user',
+                    content: message
+                }
+            ],
+            model: 'llama-3.3-70b-versatile',
+        });
+
+        const text = completion.choices[0]?.message?.content || 'Sorry, I could not generate a response.';
 
         return NextResponse.json({ response: text });
     } catch (error: any) {
